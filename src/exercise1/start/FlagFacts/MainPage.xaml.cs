@@ -81,6 +81,8 @@ namespace FlagFacts
             if (currentFlag >= repository.Flags.Count)
                 currentFlag = repository.Flags.Count-1;
             InitializeData();
+
+
         }
     }
 }

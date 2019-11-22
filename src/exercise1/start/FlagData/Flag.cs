@@ -15,11 +15,27 @@ namespace FlagData
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+        public DateTime DateAdopted
+        {
+            get { return DateAdopted; }
+            set
+            {
+                if (DateAdopted != value)
+                {
+                    DateAdopted = value;
+                    // Can pass the property name as a string,
+                    // -or- let the compiler do it because of the
+                    // CallerMemberNameAttribute on the RaisePropertyChanged method.
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
-    /// <summary>
-    /// Name of the country that this flag belongs to
-    /// </summary>
-    public string Country { get; set; }
+
+        /// <summary>
+        /// Name of the country that this flag belongs to
+        /// </summary>
+        public string Country { get; set; }
         /// <summary>
         /// Image URL for the flag (from resources)
         /// </summary>
@@ -27,7 +43,7 @@ namespace FlagData
         /// <summary>
         /// The date this flag was adopted
         /// </summary>
-        public DateTime DateAdopted { get; set; }
+       
         /// <summary>
         /// Whether the flag includes an image/shield as part of the design
         /// </summary>
@@ -40,5 +56,7 @@ namespace FlagData
         /// A URL for more information
         /// </summary>
         public Uri MoreInformationUrl { get; set; }
+
+        public double BillAmount { get; set; }
     }
 }
