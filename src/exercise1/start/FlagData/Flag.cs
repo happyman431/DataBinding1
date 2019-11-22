@@ -1,16 +1,25 @@
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace FlagData
 {
     /// <summary>
     /// This model object represents a single flag
     /// </summary>
-    public class Flag
+    public class Flag : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Name of the country that this flag belongs to
-        /// </summary>
-        public string Country { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+    
+    private void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    /// <summary>
+    /// Name of the country that this flag belongs to
+    /// </summary>
+    public string Country { get; set; }
         /// <summary>
         /// Image URL for the flag (from resources)
         /// </summary>
